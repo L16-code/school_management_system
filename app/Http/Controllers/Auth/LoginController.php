@@ -31,12 +31,13 @@ class LoginController extends Controller
     //protected $redirectTo = RouteServiceProvider::HOME;
     protected function authenticated()
     {
-        if(Auth::user()->role_as=='1'){
-            return redirect('admin/dashboard')->with('status','welcome to dashboard');
-        }
-        else{
-            return redirect('/home')->with('status','you are not admin');
-        }
+        // if(Auth::user()->role_as=='0'){
+
+        // }
+        // else{
+        //     return redirect('/home')->with('status','you are not admin');
+        // }
+        return redirect('admin/dashboard')->with('status','welcome to dashboard');
     }
     /**
      * Create a new controller instance.
