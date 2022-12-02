@@ -29,4 +29,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     //teacher route
     Route::get('teacher', [App\Http\Controllers\Admin\TeacherController::class, 'index']);
     Route::post('addteacher', [App\Http\Controllers\Admin\TeacherController::class, 'addteacher']);
+    Route::get('teachers', [App\Http\Controllers\Admin\TeacherController::class, 'teachershow']);
+
 });

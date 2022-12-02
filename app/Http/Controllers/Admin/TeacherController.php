@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Teacher;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
@@ -43,5 +44,12 @@ class TeacherController extends Controller
 
         $teacher->save();
         return redirect('admin/teacher');
+    }
+
+    public function teachershow(){
+        // $show=Teacher::all();
+        // return $show;
+        $show=DB::table('Teacher')->orderBy('id','asc')->paginate(3);
+        return view('admin.teacher.teachers',['show'=>$show]);
     }
 }

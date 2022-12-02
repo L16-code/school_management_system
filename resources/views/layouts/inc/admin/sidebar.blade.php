@@ -6,7 +6,7 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        @if (Auth::user()->role_as==0)
+
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="mdi mdi-circle-outline menu-icon"></i>
@@ -15,13 +15,16 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
+                    @if (Auth::user()->role_as==0)
                     <li class="nav-item"> <a class="nav-link" href="{{ url('admin/teacher') }}">Add Teacher</a></li>
 
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Teachers</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin/teachers') }}">Teachers</a></li>
+
+                    @endif
                 </ul>
             </div>
         </li>
-        @endif
+
         {{-- <li class="nav-item">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <i class="mdi mdi-view-headline menu-icon"></i>
