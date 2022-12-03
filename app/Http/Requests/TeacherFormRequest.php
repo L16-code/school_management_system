@@ -44,6 +44,14 @@ class TeacherFormRequest extends FormRequest
                 'required',
                 'string',
             ],
+            'status' => [
+                'required',
+                'string',
+            ],
+            // 'gender' => [
+            //     'required',
+            //     'string',
+            // ],
             'img' => [
                 'nullable',
                 'mimes:jpg,jpeg,png',

@@ -29,6 +29,17 @@
                             <input name="phone" type="number" class="form-control" id="exampleInputMobile"
                                 placeholder="Mobile number">
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Gender</label>
+                                <div class="col-sm-9">
+                                    <select name="gender[]" class="form-control">
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label>Photo</label>
                             <input type="file" name="img" class="form-control">

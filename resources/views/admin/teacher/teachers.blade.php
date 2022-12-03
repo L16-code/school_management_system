@@ -13,7 +13,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    #
+                                    Teacher_id
                                 </th>
                                 <th>
                                     name
@@ -23,6 +23,9 @@
                                 </th>
                                 <th>
                                     Phone
+                                </th>
+                                <th>
+                                    Gender
                                 </th>
                                 <th>
                                     Qualification
@@ -43,7 +46,7 @@
                             @foreach($show as $data)
                             <tr >
                                 <td>
-                                    {{ $data->id}}
+                                    {{ $data->teacher_id}}
                                 </td>
                                 <td>
                                     {{ $data->name}}
@@ -54,6 +57,9 @@
                                 <td>
                                     {{ $data->phone}}
                                 </td>
+                                <td>
+                                    {{ $data->gender}}
+                                    </td>
                                 <td>
                                     {{ $data->qualification}}
                                 </td>

@@ -16,6 +16,8 @@ class Teacher extends Model
         'qualification',
         'password',
         'img',
+        'gender',
+        'teacher_id',
 
 
     ];

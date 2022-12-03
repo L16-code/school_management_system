@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect2">Status</label>
-                            <select class="form-control" id="exampleFormControlSelect2">
+                            <select class="form-control" name="status[]"id="exampleFormControlSelect2">
                                 @if ($tid->status == 1)
                                     <option>Active</option>
                                 @else

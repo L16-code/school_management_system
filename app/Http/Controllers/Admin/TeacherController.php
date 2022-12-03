@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\Helper;
 
 class TeacherController extends Controller
 {
@@ -17,16 +18,32 @@ class TeacherController extends Controller
 
 
     }
-    public function addteacher(TeacherFormRequest $request)
+    public function addteacher(Request $request)
     {
-        $validatedata=$request->validated();
+        $validatedata=$request;
+        $date=date("Y");
+        $mid=strval($date[2].$date[3]);
+
+        $teacher_id = Helper::IDGenerator(new Teacher, 'teacher_id', 2, 'SCH',$mid,'','TEC');
+        // $q = new Teacher();
+        // $q->student_id = $teacher_id;
+        // $q->save();
         $teacher = new Teacher;
+        $teacher->teacher_id = $teacher_id;
         $user= new User;
+
         $teacher->name= $validatedata['name'];
         $teacher->email= $validatedata['email'];
         $teacher->phone= $validatedata['phone'];
+        $value = $request->gender;
+        if ($value[0] == 'M') {
+            $teacher->gender = "Male";
+        } else {
+            $teacher->gender = "Female";
+        }
         $teacher->qualification= $validatedata['qualification'];
         $teacher->password= Hash::make($validatedata['password']);
+
 
 
         if ($request->hasFile('img')) {
@@ -37,8 +54,12 @@ class TeacherController extends Controller
             $file->move('uploads/teacher/', $filename);
             $teacher->img = $filename;
         }
+
         $teacher->save();
         $id=$teacher->id;
+        // $teacher->save();
+
+
         $user->name=$validatedata['name'];
         $user->email=$validatedata['email'];
         $user->password= Hash::make($validatedata['password']);
@@ -47,7 +68,7 @@ class TeacherController extends Controller
         $user->save();
 
 
-        return redirect('admin/teacher');
+        return redirect('admin/teachers');
     }
 
     public function teachershow(){
@@ -68,7 +89,7 @@ class TeacherController extends Controller
     //     $tid=$delete->is_delete=1;
     //     // return view ('admin.teacher.edit',compact('tid'));
     //     return redirect('admin.teacher.teachers');
-        public function delete(Request $request, $id)
+    public function delete(Request $request, $id)
 
     {
         $teacher = Teacher::findOrFail($id);
@@ -90,6 +111,17 @@ class TeacherController extends Controller
         // $teacher->email= $validatedata['email'];
         $teacher->phone= $validatedata['phone'];
         $teacher->qualification= $validatedata['qualification'];
+        // if()
+        $status = $request->status;
+        if($status[0]=='Active')
+        {
+            $teacher->status= 1;
+        }
+        else{
+            $teacher->status= 0;
+        }
+
+
         // $teacher->password= Hash::make($validatedata['password']);
 
 
@@ -115,5 +147,26 @@ class TeacherController extends Controller
         $teacher->update();
         return redirect('admin/teachers');
     }
+    // public function save(Request $request){
+    //     /** Validate name field */
+    //     $request->validate([
+    //         'name'=>'required',
+    //     ]);
+
+    //     $student_name = $request->name;
+    //     $student_id = Helper::IDGenerator(new Student, 'student_id', 2, 'STD'); /** Generate id */
+    //     // $q = new Student;
+    //     // $q->student_id = $student_id;
+    //     // $q->name = $student_name;
+    //     // $save =  $q->save();
+
+    //     if($save){
+    //         return back()->with('success','New studen has been added');
+    //     }else{
+    //         return back()->with('faile','Something went wrong');
+    //     }
+
+
+    // }
 
 }
