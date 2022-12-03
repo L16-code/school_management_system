@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('role_as')->deafult('0')->comment('0=users,1=admin');
-            // $table->bigInteger('tid')->unique()->comment('teacher_id');
+            $table->bigInteger('tid')->comment('teacher_id');
+            //
         });
     }
 
@@ -27,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role_as');
+            //
+            $table->dropColumn('tid');
         });
     }
 };

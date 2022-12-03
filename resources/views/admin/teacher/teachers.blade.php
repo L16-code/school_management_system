@@ -61,11 +61,11 @@
                                     <img src="{{ asset('uploads/teacher/'.$data->img) }}" width="1000px" height="1500px" alt="Image" />
                                 </td>
                                 <td>
-                                    {{ $data->status}}
+                                {{ $data->status==1 ? 'Active' : 'inactive' }}
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-success">Edit</a>
-                                    <a href="" class="btn btn-danger">Update</a>
+                                    <a href="{{ url('admin/teacher/' .$data->id. '/edit') }}" class="btn btn-success">Edit</a>
+                                    <a href="{{ url('admin/teacher/' .$data->id. '/delete') }}" class="btn btn-danger">Delete</a>
                                 </td>
                                 @endforeach
                                 @endif
