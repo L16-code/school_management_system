@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Edit Teacher</h4>
-                    <form class="forms-sample" action="{{ url('admin/addteacher/'.$tid->id) }}" method="Post"
+                    <form class="forms-sample" action="{{ url('admin/addteacher/'.$tid->tid) }}" method="Post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('put')
@@ -27,7 +27,7 @@
                         </div> --}}
                         <div class="form-group">
                             <label for="exampleInputMobile">Mobile</label>
-                            <input name="phone" type="number" class="form-control" id="exampleInputMobile"
+                            <input name="phone" type="tel" class="form-control" id="exampleInputMobile"
                             value="{{ $tid->phone }}">
                         </div>
                         <div class="form-group">

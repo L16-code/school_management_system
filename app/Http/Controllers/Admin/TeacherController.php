@@ -21,19 +21,23 @@ class TeacherController extends Controller
     public function addteacher(Request $request)
     {
         $validatedata=$request;
+        $user= new User;
+        $user->name=$validatedata['name'];
+        $user->email=$validatedata['email'];
+        $user->password= Hash::make($validatedata['password']);
+        $user->role_as=1;
+        // $user->tid=$id;
+        $user->save();
+        // $user->id;
+        $id=$user->id;
         $date=date("Y");
         $mid=strval($date[2].$date[3]);
-
         $teacher_id = Helper::IDGenerator(new Teacher, 'teacher_id', 2, 'SCH',$mid,'','TEC');
-        // $q = new Teacher();
-        // $q->student_id = $teacher_id;
-        // $q->save();
         $teacher = new Teacher;
         $teacher->teacher_id = $teacher_id;
-        $user= new User;
-
-        $teacher->name= $validatedata['name'];
-        $teacher->email= $validatedata['email'];
+        // $teacher->name= $validatedata['name'];
+        // $teacher->email= $validatedata['email'];
+        $teacher->phone= $validatedata['phone'];
         $teacher->phone= $validatedata['phone'];
         $value = $request->gender;
         if ($value[0] == 'M') {
@@ -42,7 +46,7 @@ class TeacherController extends Controller
             $teacher->gender = "Female";
         }
         $teacher->qualification= $validatedata['qualification'];
-        $teacher->password= Hash::make($validatedata['password']);
+        // $teacher->password= Hash::make($validatedata['password']);
 
 
 
@@ -55,18 +59,14 @@ class TeacherController extends Controller
             $teacher->img = $filename;
         }
 
-        $teacher->save();
-        $id=$teacher->id;
+        $teacher->tid=$id;
+        // $teacher->save();
+        // $id=$teacher->id;
         // $teacher->save();
 
 
-        $user->name=$validatedata['name'];
-        $user->email=$validatedata['email'];
-        $user->password= Hash::make($validatedata['password']);
-        $user->role_as=1;
-        $user->tid=$id;
-        $user->save();
 
+        $teacher->save();
 
         return redirect('admin/teachers');
     }
@@ -74,12 +74,15 @@ class TeacherController extends Controller
     public function teachershow(){
         // $show=Teacher::all();
         // return $show;
-        $show=DB::table('Teacher')->orderBy('id','asc')->where('is_delete','=','0')->paginate(3);
-        return view('admin.teacher.teachers',['show'=>$show]);
+        $value=DB::table('users')->join('teacher','users.id','=','teacher.tid')->select('users.name','users.email','teacher.*')->where('is_delete','=','0')->paginate(5);
+        // $show=DB::table('Teacher')->orderBy('id','asc')->where('is_delete','=','0')->paginate(3);
+        return view('admin.teacher.teachers',['show'=>$value]);
     }
-    public function edit(Teacher $tid)
+    public function edit($tid)
     {
-        return view ('admin.teacher.edit',compact('tid'));
+        $value=DB::table('users')->join('teacher','users.id','=','teacher.tid')->select('users.name','users.email','teacher.*')->where('teacher.tid','=',$tid)->first();
+
+        return view ('admin.teacher.edit',['tid'=>$value]);
 
     }
 
@@ -92,9 +95,14 @@ class TeacherController extends Controller
     public function delete(Request $request, $id)
 
     {
-        $teacher = Teacher::findOrFail($id);
+        $teacher = Teacher::where('teacher.tid','=',$id)->first();
+        // $teacher=Teacher::findorFail($id);
+
         $teacher->is_delete = 1;
         $teacher->update();
+        $user=User::find($id);
+        $user->role_as=3;
+        $user->update();
         return redirect('admin/teachers/');
     }
 
@@ -102,12 +110,18 @@ class TeacherController extends Controller
     public function update(Request $request,$tid)
     {
         // return view ('admin.teacher.edit',compact('tid'));
-        $teacher=Teacher::findOrFail($tid);
-        $user=User::all()->where('tid',$tid)->first();
+        $teacher=Teacher::all()->where('tid','=',$tid)->first();
+        // $value=DB::table('users')->join('teacher','users.id','=','teacher.tid')->select('users.name','users.email','teacher.*')->where('is_delete','=','0')->get();
+        $user=User::all()->where('id','=',$tid)->first();
         $validatedata=$request;
+        $user->name=$validatedata['name'];
+        $user->email=$validatedata['email'];
+        // $user->password= Hash::make($validatedata['password']);
+        $user->role_as=1;
+        $user->update();
         // $teacher = new Teacher;
         // $user= new User;
-        $teacher->name= $validatedata['name'];
+        // $teacher->name= $validatedata['name'];
         // $teacher->email= $validatedata['email'];
         $teacher->phone= $validatedata['phone'];
         $teacher->qualification= $validatedata['qualification'];
@@ -138,11 +152,7 @@ class TeacherController extends Controller
             $teacher->img = $filename;
         }
 
-        $user->name=$validatedata['name'];
-        $user->email=$validatedata['email'];
-        // $user->password= Hash::make($validatedata['password']);
-        $user->role_as=1;
-        $user->update();
+
 
         $teacher->update();
         return redirect('admin/teachers');

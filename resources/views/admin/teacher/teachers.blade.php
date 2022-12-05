@@ -70,8 +70,8 @@
                                 {{ $data->status==1 ? 'Active' : 'inactive' }}
                                 </td>
                                 <td>
-                                    <a href="{{ url('admin/teacher/' .$data->id. '/edit') }}" class="btn btn-success">Edit</a>
-                                    <a href="{{ url('admin/teacher/' .$data->id. '/delete') }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ url('admin/teacher/' .$data->tid. '/edit') }}" class="btn btn-success">Edit</a>
+                                    <a href="{{ url('admin/teacher/' .$data->tid. '/delete') }}" class="btn btn-danger">Delete</a>
                                 </td>
                                 @endforeach
                                 @endif
