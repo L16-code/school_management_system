@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas " id="sidebar">
     <ul class="nav position-fixed">
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ url('/admin/dashboard') }}">
                 <i class="mdi mdi-home menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -45,11 +45,23 @@
         </li> --}}
 
         @if (Auth::user()->role_as==1||Auth::user()->role_as==0)
+
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
-                <i class="mdi mdi-emoticon menu-icon"></i>
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-base" aria-expanded="false" aria-controls="ui-basic">
+                <i class="mdi mdi-circle-outline menu-icon"></i>
                 <span class="menu-title">Students</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-base">
+                <ul class="nav flex-column sub-menu">
+                    @if (Auth::user()->role_as==0)
+                    <li class="nav-item"> <a class="nav-link" href="">Add Students</a></li>
+
+                    <li class="nav-item"> <a class="nav-link" href="">View Students</a></li>
+
+                    @endif
+                </ul>
+            </div>
         </li>
         @endif
         <li class="nav-item">
@@ -60,8 +72,8 @@
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> class 1</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> class 2 </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin/class') }}"> Add class</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin/display') }}"> Class  </a></li>
                 </ul>
             </div>
         </li>

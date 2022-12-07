@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,24 +22,22 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->middleware(['auth', 'isAdmin:0,1,2']);
 
-Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
-    //teacher route
-    // Route::get('teacher', [App\Http\Controllers\Admin\TeacherController::class, 'index']);
-    // Route::post('addteacher', [App\Http\Controllers\Admin\TeacherController::class, 'addteacher']);
-    // Route::get('teachers', [App\Http\Controllers\Admin\TeacherController::class, 'teachershow']);
+    //class routes
+    Route::prefix('admin')->controller(App\Http\Controllers\Admin\ClassController::class)->group(function () {
+    Route::get('class',  'class')->middleware(['auth', 'isAdmin:0,1,null']);
+    Route::post('addclass',  'addclass')->middleware(['auth', 'isAdmin:0,1,null']);
+    Route::get('display',  'display')->middleware(['auth', 'isAdmin:0,1,null']);
+});
+    //teacher routes
+    Route::prefix('admin')->controller(App\Http\Controllers\Admin\TeacherController::class)->group(function () {
+        Route::get('/teacher', 'index')->middleware(['auth', 'isAdmin:0,null,null']);;
+        Route::post('/addteacher',  'addteacher')->middleware(['auth', 'isAdmin:0,null,null']);
+        Route::get('/teachers',  'teachershow')->middleware(['auth', 'isAdmin:0,1,null']);
+        Route::get('/teacher/{tid}/edit','edit')->middleware(['auth', 'isAdmin:0,null,null']);
+        Route::get('/teacher/{tid}/delete','delete')->middleware(['auth', 'isAdmin:0,null,null']);
+        Route::put('/addteacher/{tid}','update')->middleware(['auth', 'isAdmin:0,null,null']);
 
-    //edit
-    Route::controller(App\Http\Controllers\Admin\TeacherController::class)->group(function () {
-        Route::get('/teacher', 'index');
-        Route::post('/addteacher',  'addteacher');
-        Route::get('/teachers',  'teachershow');
-        Route::get('/teacher/{tid}/edit','edit');
-        Route::get('/teacher/{tid}/delete','delete');
-        Route::put('/addteacher/{tid}','update');
-        // Route::get('/orders/{id}', 'show');
-        // Route::post('/orders', 'store');
     });
 
-});
