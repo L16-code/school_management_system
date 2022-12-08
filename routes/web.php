@@ -29,7 +29,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('class',  'class')->middleware(['auth', 'isAdmin:0,1,null']);
     Route::post('addclass',  'addclass')->middleware(['auth', 'isAdmin:0,1,null']);
     Route::get('display',  'display')->middleware(['auth', 'isAdmin:0,1,null']);
+    Route::get('/class/{id}/edit','edit')->middleware(['auth', 'isAdmin:0,1,null']);
+    Route::put('/updateclass/{id}','update')->middleware(['auth', 'isAdmin:0,1,null']);
 });
+
+
     //teacher routes
     Route::prefix('admin')->controller(App\Http\Controllers\Admin\TeacherController::class)->group(function () {
         Route::get('/teacher', 'index')->middleware(['auth', 'isAdmin:0,null,null']);;
@@ -41,3 +45,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
     });
 
+//students controller
+Route::prefix('admin')->controller(App\Http\Controllers\Admin\StudentController::class)->group(function () {
+
+
+    Route::get('/student', 'index')->middleware(['auth', 'isAdmin:0,1,null']);
+    Route::post('/addstudent',  'addstudent')->middleware(['auth', 'isAdmin:0,1,null']);
+});

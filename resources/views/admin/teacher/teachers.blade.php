@@ -3,8 +3,30 @@
 @section('content')
     <div class="col-lg-12 stretch-card">
         <div class="card">
+
             <div class="card-body">
-                <h4 class="card-title">Teacher's table</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            {{-- <label class="col-sm-3 col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="fname">
+                            </div> --}}
+                        </div>
+                        <h4 class="card-title">Teacher's table</h4>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group row text-right">
+                                <form action="{{ url('admin/teacher') }}">
+                                <button type="Submit" class="btn btn-primary me-2 btn-rounded float-end">Add Teacher</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+
+
                 <p class="card-description">
                     all teachers</code>
                 </p>

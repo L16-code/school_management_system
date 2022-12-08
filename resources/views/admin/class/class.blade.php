@@ -4,20 +4,30 @@
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Add class</h4>
-                <p class="card-description">
 
-                </p>
-                {{-- <div class="col-md-6">
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Class</label>
-                        <div class="col-sm-9">
-                            <select name="class[]" class="form-control">
-
-                            </select>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        </div>
+                        <h4 class="card-title">Add Class</h4>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group row text-right">
+                                <form action="{{ url('admin/display') }}">
+                                <button type="Submit" class="btn btn-danger me-2 btn-rounded float-right">Back</button>
+                                </form>
                         </div>
                     </div>
-                </div> --}}
+                </div>
+                {{-- <h4 class="card-title">Add class</h4> --}}
+                <p class="card-description">
+                    @if(Session::has('message'))
+                        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                    @endif
+                </p>
+
 
             <form class="forms-sample" action="{{ url('admin/addclass') }}" method="POST"
                         enctype="multipart/form-data">

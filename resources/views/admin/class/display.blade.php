@@ -1,67 +1,81 @@
 @extends('layouts.admin')
 
 @section('content')
+    <div class="col-lg-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                {{-- <h4 class="card-title">Class's table</h4> --}}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                        </div>
+                        <h4 class="card-title">Class's table</h4>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group row text-right">
+                            <form action="{{ url('admin/class') }}">
+                                <button type="Submit" class="btn btn-primary me-2 btn-rounded float-end">Add
+                                    Class</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <p class="card-description">
+                    </code>
+                </p>
+                <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    class
+                                </th>
+                                <th>
+                                    Section
+                                </th>
+                                <th>
+                                    Current
+                                </th>
+
+                                <th>
+                                    Max class Strength
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- @if (!empty($show) && $show->count()) --}}
+                            @foreach ($show as $data)
+                                <tr>
+                                    <td>
+                                        {{ $data->classs }}
+                                    </td>
+                                    <td>
+                                        {{ $data->name }}
+                                    </td>
+                                    <td>
+                                        {{ $data->current }}
+                                    </td>
+                                    <td>
+                                        {{ $data->max }}
+                                    </td>
+                                    <td>
+                                        {{-- href="{{ url('admin/teacher/' . $data->tid . '/edit') }}" --}}
+                                        {{-- href="{{ url('admin/teacher/' . $data->tid . '/delete') }}" --}}
+                                        <a
+                                            class="btn btn-success float-left "href="{{ url('admin/class/' . $data->id . '/edit') }}">Edit</a>
+                                        <a
+                                            class="btn btn-danger mr-7 ">Delete</a>
+
+                                    </td>
 
 
-<div class="col-lg-12 stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Class's table</h4>
-            <p class="card-description">
-                </code>
-            </p>
-            <div class="table-responsive pt-3">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                class
-                            </th>
-                            <th>
-                                Section
-                            </th>
-                            <th>
-                                Current
-                            </th>
-                            {{-- <th>
-                                Sec C
-                            </th> --}}
-                            <th>
-                                Max class Strength
-                            </th>
-                            {{-- <th>
-                                Qualification
-                            </th>
-                            <th>
-                                Image
-                            </th>
-                            <th>
-                                Status
-                            </th>
-                            <th>
-                                Action
-                            </th> --}}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{-- @if(!empty($show)&& $show->count()) --}}
-                        @foreach($show as $data)
-                        <tr >
-                            <td>
-                                {{ $data->classs}}
-                            </td>
-                            <td>
-                                {{ $data->name}}
-                            </td>
-                            <td>
-                                {{ $data->current}}
-                            </td>
-                            <td>
-                                {{ $data->max}}
-                            </td>
-
-
-                            {{-- <td>
+                                    {{-- <td>
                                 {{ $data->phone}}
                             </td>
                             <td>
@@ -76,13 +90,13 @@
                             <td>
                             {{ $data->status==1 ? 'Active' : 'inactive' }}
                             </td> --}}
-                            {{-- <td>
+                                    {{-- <td>
                                 <a href="{{ url('admin/teacher/' .$data->tid. '/edit') }}" class="btn btn-success">Edit</a>
                                 <a href="{{ url('admin/teacher/' .$data->tid. '/delete') }}" class="btn btn-danger">Delete</a>
                             </td> --}}
                             @endforeach
                             {{-- @endif --}}
-                        {{-- </tr>
+                            {{-- </tr>
                         <tr class="table-warning">
                             <td>
                                 2
@@ -151,11 +165,11 @@
                                 May 03, 2015
                             </td>
                         </tr> --}}
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">{{ $show->links() }}</div>
             </div>
-            <div class="row">{{$show->links()}}</div>
         </div>
     </div>
-</div>
 @endsection

@@ -4,8 +4,26 @@
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
+
                 <div class="card-body">
-                    <h4 class="card-title">Add Teacher</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                            </div>
+                            <h4 class="card-title">Add Teacher</h4>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group row text-right">
+                                    <form action="{{ url('admin/teachers') }}">
+                                    <button type="Submit" class="btn btn-danger me-2 btn-rounded float-right">Back</button>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <h4 class="card-title">Add Teacher</h4> --}}
+
                     <form class="forms-sample" action="{{ url('admin/addteacher') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf

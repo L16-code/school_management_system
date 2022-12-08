@@ -13,10 +13,34 @@ class ClassController extends Controller
     }
     public function display(){
         // $show=Classes::all();
-        $value=DB::table('class_tbl')->join('section_tbl','class_tbl.id','=','section_tbl.cid')->select('class_tbl.classs','section_tbl.*')->paginate(2);
+        $value=DB::table('class_tbl')->join('section_tbl','class_tbl.id','=','section_tbl.cid')->select('class_tbl.classs','section_tbl.*')->orderBy('cid','asc')->paginate(2);
         // $show=DB::table('class')->orderBy('id','asc')->paginate(3);
         // dd($show);
         return view('admin.class.display',['show'=>$value]);
+    }
+
+    public function edit($id)
+    {
+        $value=DB::table('class_tbl')->join('section_tbl','class_tbl.id','=','section_tbl.cid')->select('class_tbl.classs','section_tbl.*')->where('section_tbl.id',"=",$id)->first();
+        // dd($value);
+        return view ('admin.class.editclass',['id'=>$value]);
+    }
+
+    public function update(Request $request,$id)
+    {
+        $class=Section::all()->where('id','=',$id)->first();
+        $input=$request->max;
+        if($class->current > $input)
+        {
+            return redirect('admin/class/'.$id.'/edit')->with('message',"student is greater than max student");
+
+        }
+        $class->max=$input;
+        // $current=$class->current;
+
+        $class->update();
+        return redirect('admin/display');
+
     }
     public function addclass(Request $request){
         $recived_class = $request->class;
@@ -40,10 +64,10 @@ class ClassController extends Controller
             return redirect('admin/class');
         } else {
 
-            $temp->max = $max_value;
-            $temp->update();
+            // $temp->max = $max_value;
+            // $temp->update();
 
-            return redirect('admin/class');
+            return redirect('admin/class')->with('message',"already exists");
         }
 
     }
