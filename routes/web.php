@@ -36,13 +36,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
     //teacher routes
     Route::prefix('admin')->controller(App\Http\Controllers\Admin\TeacherController::class)->group(function () {
-        Route::get('/teacher', 'index')->middleware(['auth', 'isAdmin:0,null,null']);;
+        Route::get('/teacher', 'index')->middleware(['auth', 'isAdmin:0,null,null']);
         Route::post('/addteacher',  'addteacher')->middleware(['auth', 'isAdmin:0,null,null']);
         Route::get('/teachers',  'teachershow')->middleware(['auth', 'isAdmin:0,1,null']);
         Route::get('/teacher/{tid}/edit','edit')->middleware(['auth', 'isAdmin:0,null,null']);
         Route::get('/teacher/{tid}/delete','delete')->middleware(['auth', 'isAdmin:0,null,null']);
         Route::put('/addteacher/{tid}','update')->middleware(['auth', 'isAdmin:0,null,null']);
-
+        Route::get('/search', 'search')->middleware(['auth', 'isAdmin:0,1,null']);;
     });
 
 //students controller
@@ -51,4 +51,5 @@ Route::prefix('admin')->controller(App\Http\Controllers\Admin\StudentController:
 
     Route::get('/student', 'index')->middleware(['auth', 'isAdmin:0,1,null']);
     Route::post('/addstudent',  'addstudent')->middleware(['auth', 'isAdmin:0,1,null']);
+    Route::get('/displaystudent',  'display')->middleware(['auth', 'isAdmin:0,1,null']);
 });

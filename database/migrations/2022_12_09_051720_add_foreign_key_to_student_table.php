@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('student', function (Blueprint $table) {
+            $table->unsignedBigInteger('sid');
+            $table->foreign('sid')->references('id')->on('section_tbl');
+            $table->unsignedBigInteger('stid');
+            $table->foreign('stid')->references('id')->on('users');
         });
     }
 
@@ -26,6 +28,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student');
+        Schema::table('student', function (Blueprint $table) {
+            //
+        });
     }
 };

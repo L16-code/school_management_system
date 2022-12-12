@@ -58,7 +58,7 @@
                     @if (Auth::user()->role_as==0)
                     <li class="nav-item"> <a class="nav-link" href="{{ url('admin/student') }}">Add Students</a></li>
 
-                    <li class="nav-item"> <a class="nav-link" href="">View Students</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('admin/displaystudent') }}">View Students</a></li>
 
                     @endif
                 </ul>

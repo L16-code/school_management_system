@@ -13,7 +13,7 @@ class ClassController extends Controller
     }
     public function display(){
         // $show=Classes::all();
-        $value=DB::table('class_tbl')->join('section_tbl','class_tbl.id','=','section_tbl.cid')->select('class_tbl.classs','section_tbl.*')->orderBy('cid','asc')->paginate(2);
+        $value=DB::table('class_tbl')->join('section_tbl','class_tbl.id','=','section_tbl.cid')->select('class_tbl.classs','section_tbl.*')->orderBy('cid','asc')->paginate(10);
         // $show=DB::table('class')->orderBy('id','asc')->paginate(3);
         // dd($show);
         return view('admin.class.display',['show'=>$value]);

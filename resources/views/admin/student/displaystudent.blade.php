@@ -6,52 +6,36 @@
 
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group row">
                             {{-- <label class="col-sm-3 col-form-label">First Name</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="fname">
                             </div> --}}
-
                         </div>
-                        <h4 class="card-title">Teacher's table</h4>
+                        <h4 class="card-title">Student's table</h4>
                     </div>
-                    <div class="col-md-5">
-                        <form action="{{ url('admin/search') }}" method="GET">
-                            <div class="input-group">
-                                <div class="form-outline">
-                                    <input type="search" name="search" id="form1" class="form-control" />
-
-                                    {{-- <label class="form-label" for="form1">Search</label> --}}
-                                </div>
-                                {{-- <button type="Submit" class="btn btn-primary"> --}}
-                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-account-search"></i></button>
-                                    {{-- <button class="btn btn-primary my-2 my-sm-0 " type="submit"><i class="mdi mdi-account-search"></i></button> --}}
-
-                                </button>
-                            </div>
-                        </form>
+                    <div class="col-md-3">
                     </div>
                     <div class="col-md-3">
                         <div class="form-group row text-right">
-                            <form action="{{ url('admin/teacher') }}">
-                                <button type="Submit" class="btn btn-primary me-2 btn-rounded float-end">Add
-                                    Teacher</button>
-                            </form>
+                                <form action="{{ url('admin/student') }}">
+                                <button type="Submit" class="btn btn-primary me-2 btn-rounded float-end">Add Student</button>
+                                </form>
                         </div>
                     </div>
                 </div>
 
 
                 <p class="card-description">
-                    all teachers</code>
+                    all student</code>
                 </p>
                 <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>
-                                    Teacher_id
+                                    Student_id
                                 </th>
                                 <th>
                                     name
@@ -66,13 +50,13 @@
                                     Gender
                                 </th>
                                 <th>
-                                    Qualification
+                                    Class
                                 </th>
                                 <th>
                                     Image
                                 </th>
                                 <th>
-                                    Status
+                                    zip
                                 </th>
                                 <th>
                                     Action
@@ -80,42 +64,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (!empty($show) && $show->count())
-                                @foreach ($show as $data)
-                                    <tr>
-                                        <td>
-                                            {{ $data->teacher_id }}
-                                        </td>
-                                        <td>
-                                            {{ $data->name }}
-                                        </td>
-                                        <td>
-                                            {{ $data->email }}
-                                        </td>
-                                        <td>
-                                            {{ $data->phone }}
-                                        </td>
-                                        <td>
-                                            {{ $data->gender }}
-                                        </td>
-                                        <td>
-                                            {{ $data->qualification }}
-                                        </td>
-                                        <td>
-                                            <img src="{{ asset('uploads/teacher/' . $data->img) }}" width="1000px"
-                                                height="1500px" alt="Image" />
-                                        </td>
-                                        <td>
-                                            {{ $data->status == 1 ? 'Active' : 'inactive' }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ url('admin/teacher/' . $data->tid . '/edit') }}"
-                                                class="btn btn-success">Edit</a>
-                                            <a href="{{ url('admin/teacher/' . $data->tid . '/delete') }}"
-                                                class="btn btn-danger">Delete</a>
-                                        </td>
+                            @if(!empty($show)&& $show->count())
+                            @foreach($show as $data)
+                            <tr >
+                                <td>
+                                    {{ $data->student_id}}
+                                </td>
+                                <td>
+                                    {{ $data->name}}
+                                </td>
+                                <td>
+                                    {{ $data->email}}
+                                </td>
+                                <td>
+                                    {{ $data->phone}}
+                                </td>
+                                <td>
+                                    {{ $data->gender}}
+                                    </td>
+                                <td>
+                                    {{ $data->classs}}
+                                </td>
+                                <td>
+                                    <img src="{{ asset('uploads/student/'.$data->img) }}" width="1000px" height="1500px" alt="Image" />
+                                </td>
+                                <td>
+                                {{ $data->zip }}
+                                </td>
+                                <td>
+                                    <a href="{{ url('admin/teacher/' .$data->id. '/edit') }}" class="btn btn-success">Edit</a>
+                                    <a href="{{ url('admin/teacher/' .$data->id. '/delete') }}" class="btn btn-danger">Delete</a>
+                                </td>
                                 @endforeach
-                            @endif
+                                @endif
                             {{-- </tr>
                             <tr class="table-warning">
                                 <td>
@@ -188,7 +169,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row">{{ $show->links() }}</div>
+                <div class="row">{{$show->links()}}</div>
             </div>
         </div>
     </div>

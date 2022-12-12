@@ -32,7 +32,7 @@ class TeacherController extends Controller
         $id=$user->id;
         $date=date("Y");
         $mid=strval($date[2].$date[3]);
-        $teacher_id = Helper::IDGenerator(new Teacher, 'teacher_id', 2, 'SCH',$mid,'','TEC');
+        $teacher_id = Helper::IDGenerator(new Teacher, 'teacher_id', 2, 'SCH',$mid,'','','TEC');
         $teacher = new Teacher;
         $teacher->teacher_id = $teacher_id;
         // $teacher->name= $validatedata['name'];
@@ -70,7 +70,23 @@ class TeacherController extends Controller
 
         return redirect('admin/teachers');
     }
+public function search(Request $request){
+    if($request->search){
+        $search=DB::table('users')->join('teacher','users.id','=','teacher.tid')
+        ->select('users.name','users.email','teacher.*')
 
+        ->where('users.name','LIKE','%'.$request->search.'%' )
+        ->orwhere('users.email','LIKE','%'.$request->search.'%' )
+        ->orwhere('teacher.teacher_id','LIKE','%'.$request->search.'%' )
+        ->where('is_delete','=','0')
+        ->paginate(5);
+        return view('admin.teacher.search',compact('search'));
+    }
+    else{
+        return redirect('admin/teachers')->with('message', 'empty search');
+    }
+
+}
     public function teachershow(){
         // $show=Teacher::all();
         // return $show;
