@@ -1,0 +1,117 @@
+[
+{"type":"header","version":"5.2.0","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"school"},
+{"type":"table","name":"class_tbl","database":"school","data":
+[
+{"id":"1","classs":"Class 1","created_at":null,"updated_at":null},
+{"id":"2","classs":"Class 2","created_at":null,"updated_at":null},
+{"id":"3","classs":"Class 3","created_at":null,"updated_at":null},
+{"id":"4","classs":"Class 4","created_at":null,"updated_at":null},
+{"id":"5","classs":"Class 5","created_at":null,"updated_at":null},
+{"id":"6","classs":"Class 6","created_at":null,"updated_at":null},
+{"id":"7","classs":"Class 7","created_at":null,"updated_at":null},
+{"id":"8","classs":"Class 8","created_at":null,"updated_at":null},
+{"id":"9","classs":"Class 9","created_at":null,"updated_at":null},
+{"id":"10","classs":"Class 10","created_at":null,"updated_at":null},
+{"id":"11","classs":"Class 11","created_at":null,"updated_at":null},
+{"id":"12","classs":"Class 12","created_at":null,"updated_at":null}
+]
+}
+,{"type":"table","name":"failed_jobs","database":"school","data":
+[
+
+]
+}
+,{"type":"table","name":"migrations","database":"school","data":
+[
+{"id":"9","migration":"2014_10_12_000000_create_users_table","batch":"1"},
+{"id":"10","migration":"2014_10_12_100000_create_password_resets_table","batch":"1"},
+{"id":"11","migration":"2019_08_19_000000_create_failed_jobs_table","batch":"1"},
+{"id":"12","migration":"2019_12_14_000001_create_personal_access_tokens_table","batch":"1"},
+{"id":"13","migration":"2022_12_01_091626_add_details_to_users_table","batch":"1"},
+{"id":"14","migration":"2022_12_01_115546_create_teacher_table","batch":"1"},
+{"id":"15","migration":"2022_12_02_054739_add_details_to_teacher_table","batch":"1"},
+{"id":"16","migration":"2022_12_03_071610_add_details_to_users_table","batch":"1"},
+{"id":"17","migration":"2022_12_03_085953_create_student_table","batch":"1"},
+{"id":"18","migration":"2022_12_03_094335_update_teacher_id_column_in_teacher_table","batch":"1"},
+{"id":"19","migration":"2022_12_05_055230_delete_column_to_teacher_table","batch":"1"},
+{"id":"20","migration":"2022_12_05_061730_add_foreign_key_to_teacher_table","batch":"2"},
+{"id":"21","migration":"2022_12_05_094756_create_table_student","batch":"3"},
+{"id":"22","migration":"2022_12_05_095205_create_class_table","batch":"3"},
+{"id":"23","migration":"2022_12_06_085818_create_class_table","batch":"4"},
+{"id":"24","migration":"2022_12_07_055925_create_class_tbl_table","batch":"4"},
+{"id":"25","migration":"2022_12_07_062549_create_section_tbl_table","batch":"5"},
+{"id":"26","migration":"2022_12_09_050229_create_student_table","batch":"6"},
+{"id":"27","migration":"2022_12_09_051720_add_foreign_key_to_student_table","batch":"7"}
+]
+}
+,{"type":"table","name":"password_resets","database":"school","data":
+[
+
+]
+}
+,{"type":"table","name":"personal_access_tokens","database":"school","data":
+[
+
+]
+}
+,{"type":"table","name":"section_tbl","database":"school","data":
+[
+{"id":"1","name":"A","max":"15","current":"15","created_at":"2022-12-07 08:48:44","updated_at":"2022-12-08 10:33:36","cid":"1"},
+{"id":"3","name":"B","max":"20","current":"0","created_at":"2022-12-07 08:51:38","updated_at":"2022-12-07 08:51:38","cid":"1"},
+{"id":"7","name":"A","max":"25","current":"1","created_at":"2022-12-07 09:53:05","updated_at":"2022-12-11 03:17:51","cid":"2"},
+{"id":"8","name":"C","max":"25","current":"0","created_at":"2022-12-07 10:40:40","updated_at":"2022-12-07 10:40:40","cid":"1"},
+{"id":"9","name":"A","max":"20","current":"0","created_at":"2022-12-11 03:37:06","updated_at":"2022-12-11 03:37:06","cid":"3"},
+{"id":"10","name":"A","max":"50","current":"1","created_at":"2022-12-11 03:37:32","updated_at":"2022-12-12 05:49:37","cid":"4"},
+{"id":"11","name":"A","max":"20","current":"1","created_at":"2022-12-11 03:37:38","updated_at":"2022-12-12 05:51:47","cid":"5"},
+{"id":"12","name":"A","max":"20","current":"0","created_at":"2022-12-11 03:37:45","updated_at":"2022-12-11 03:37:45","cid":"6"},
+{"id":"13","name":"A","max":"30","current":"0","created_at":"2022-12-11 03:37:51","updated_at":"2022-12-11 03:37:51","cid":"7"},
+{"id":"14","name":"A","max":"35","current":"0","created_at":"2022-12-11 03:37:59","updated_at":"2022-12-11 03:37:59","cid":"8"},
+{"id":"15","name":"A","max":"25","current":"0","created_at":"2022-12-11 03:38:05","updated_at":"2022-12-11 03:38:05","cid":"9"},
+{"id":"16","name":"A","max":"45","current":"1","created_at":"2022-12-11 03:38:11","updated_at":"2022-12-11 03:39:08","cid":"10"},
+{"id":"17","name":"A","max":"50","current":"1","created_at":"2022-12-11 03:38:21","updated_at":"2022-12-12 05:56:44","cid":"11"},
+{"id":"18","name":"A","max":"5","current":"0","created_at":"2022-12-11 03:38:28","updated_at":"2022-12-11 03:38:28","cid":"12"}
+]
+}
+,{"type":"table","name":"student","database":"school","data":
+[
+{"id":"3","lname":"Boris Pruitt","student_id":"SCH22CL10STU001","secemail":"xizorewik@mailinator.com","gender":"Male","phone":"+1 (313) 481-8227","dob":"2019-02-24","img":null,"address":"Necessitatibus magni","state":"Assam","zip":"61248","city":"Animi ratione repre","is_delete":"0","created_at":"2022-12-11 03:39:08","updated_at":"2022-12-11 03:39:08","sid":"16","stid":"26"},
+{"id":"4","lname":"Scarlet Goodwin","student_id":"SCH22CL4STU001","secemail":"varemovoxa@mailinator.com","gender":"Male","phone":"+1 (251) 224-5344","dob":"1972-12-19","img":"1670824177.jpg","address":"Rerum dolor aut mole","state":"Delhi","zip":"56728","city":"Ipsum voluptate per","is_delete":"0","created_at":"2022-12-12 05:49:37","updated_at":"2022-12-12 05:49:37","sid":"10","stid":"27"},
+{"id":"5","lname":"Britanney Briggs","student_id":"SCH22CL5STU001","secemail":"sehexysec@mailinator.com","gender":"Male","phone":"+1 (158) 159-8938","dob":"1976-03-18","img":null,"address":"Quia nihil voluptas","state":"Rajasthan","zip":"13306","city":"Illum asperiores ci","is_delete":"0","created_at":"2022-12-12 05:51:47","updated_at":"2022-12-12 05:51:47","sid":"11","stid":"28"}
+]
+}
+,{"type":"table","name":"teacher","database":"school","data":
+[
+{"id":"1","phone":"+1 (825) 254-999","qualification":"Ea autem fuga Illo","img":"1670230519.jpg","gender":"Female","teacher_id":"SCH22TEC00","created_at":"2022-12-05 07:00:20","updated_at":"2022-12-12 07:28:52","role_as":"1","status":"1","is_delete":"1","tid":"5"},
+{"id":"3","phone":"+1 (642) 271-8953","qualification":"Porro sit rerum sed","img":"1670224965.jpg","gender":"Male","teacher_id":"SCH22TEC03","created_at":"2022-12-05 07:22:45","updated_at":"2022-12-05 09:17:43","role_as":"1","status":"1","is_delete":"1","tid":"7"},
+{"id":"6","phone":"+1 (105) 168-5668","qualification":"Eos necessitatibus e","img":"1670231290.jpg","gender":"Female","teacher_id":"SCH22TEC03","created_at":"2022-12-05 09:08:10","updated_at":"2022-12-05 09:08:16","role_as":"1","status":"1","is_delete":"1","tid":"11"},
+{"id":"7","phone":"+1 (656) 743-5141","qualification":"In officia non a ill","img":null,"gender":"Female","teacher_id":"SCH22TEC03","created_at":"2022-12-05 09:20:41","updated_at":"2022-12-05 09:20:47","role_as":"1","status":"1","is_delete":"1","tid":"12"},
+{"id":"8","phone":"+1 (454) 285-5884","qualification":"Laboris officia iure","img":null,"gender":"Female","teacher_id":"SCH22TEC04","created_at":"2022-12-05 09:37:18","updated_at":"2022-12-13 03:12:44","role_as":"1","status":"1","is_delete":"1","tid":"13"},
+{"id":"9","phone":"+1 (305) 578-6209","qualification":"Porro voluptates dis","img":null,"gender":"Female","teacher_id":"SCH22TEC05","created_at":"2022-12-05 10:20:49","updated_at":"2022-12-13 06:04:34","role_as":"1","status":"1","is_delete":"0","tid":"14"},
+{"id":"10","phone":"+1 (358) 161-6923","qualification":"Quis nihil ullam ver","img":null,"gender":"Female","teacher_id":"SCH22TEC06","created_at":"2022-12-06 07:08:53","updated_at":"2022-12-13 03:22:35","role_as":"1","status":"1","is_delete":"1","tid":"15"},
+{"id":"11","phone":"+1 (581) 447-8399","qualification":"Voluptate reprehende","img":"1670901812.jpg","gender":"Female","teacher_id":"SCH22TEC07","created_at":"2022-12-13 03:23:32","updated_at":"2022-12-13 09:19:15","role_as":"1","status":"1","is_delete":"0","tid":"29"},
+{"id":"12","phone":"+1 (324) 401-6806","qualification":"Distinctio Quis vol","img":"1670913093.jpg","gender":"Male","teacher_id":"SCH22TEC08","created_at":"2022-12-13 06:31:33","updated_at":"2022-12-13 06:31:44","role_as":"1","status":"1","is_delete":"1","tid":"30"}
+]
+}
+,{"type":"table","name":"users","database":"school","data":
+[
+{"id":"1","name":"Admin","email":"admin@gmail.com","email_verified_at":null,"password":"$2y$10$LW5Mnec.1uhL8T17ymtqe.4ad.yv\/f908mNit1NrpCn4tADox4jG2","remember_token":null,"created_at":"2022-12-05 06:05:36","updated_at":"2022-12-05 06:05:36","role_as":"0"},
+{"id":"5","name":"iam","email":"iam@mailinator.com","email_verified_at":null,"password":"$2y$10$y1X5mv7t3YGJlCjE1KZyc.0L.p3Zepe5i36V4Wff1ZRDXTTFoJuye","remember_token":null,"created_at":"2022-12-05 07:00:20","updated_at":"2022-12-12 07:28:52","role_as":"3"},
+{"id":"6","name":"Eliana Britt","email":"jycivevidu@mailinator.com","email_verified_at":null,"password":"$2y$10$R2FoEPA5NW0pB4G7MNxHOuUz43AIzCb\/6Xmqpur2u9fSELyYBeUXq","remember_token":null,"created_at":"2022-12-05 07:00:40","updated_at":"2022-12-05 09:08:16","role_as":"3"},
+{"id":"7","name":"Richard Keith","email":"nofitiqula@mailinator.com","email_verified_at":null,"password":"$2y$10$YSEva0XSyNuG9q6MF5vNeOuLZSttm.F6S.d9Cc5HDGlYqYJ9EkUFa","remember_token":null,"created_at":"2022-12-05 07:22:45","updated_at":"2022-12-05 07:22:45","role_as":"1"},
+{"id":"8","name":"Talon Waller","email":"helo@gmail.com","email_verified_at":null,"password":"$2y$10$Px15oeuQhTFM.cz5Bvcf5ey5qODiB8c81l4lMqc3t\/DIBWtt7dtHa","remember_token":null,"created_at":"2022-12-05 09:00:01","updated_at":"2022-12-05 09:00:01","role_as":"1"},
+{"id":"9","name":"Sade Strong","email":"hy@gmail.com","email_verified_at":null,"password":"$2y$10$lU\/wY023Px889HBkBLtyMuLfZcn3DekFlMWGWKTifvB87Pphm1S3y","remember_token":null,"created_at":"2022-12-05 09:04:07","updated_at":"2022-12-05 09:04:07","role_as":"1"},
+{"id":"11","name":"Cleo Black","email":"hy1@gmail.com","email_verified_at":null,"password":"$2y$10$DWpa3uO\/sCqzkC0tsE55QeI6GlJrkqU7Tw40Fqj6C6XUDjbsjzVE.","remember_token":null,"created_at":"2022-12-05 09:08:10","updated_at":"2022-12-05 09:08:10","role_as":"1"},
+{"id":"12","name":"Bert Bennett","email":"conykef@mailinator.com","email_verified_at":null,"password":"$2y$10$8jlIMik79mH\/GEiMREqEUuPzzT87emGzstVq\/e\/d9ajEhHIsrLtim","remember_token":null,"created_at":"2022-12-05 09:20:41","updated_at":"2022-12-05 09:20:47","role_as":"3"},
+{"id":"13","name":"Hasad Pierce","email":"nehu@mailinator.com","email_verified_at":null,"password":"$2y$10$wwyJWq3Cv6UpSN\/hQcjUUeeYeovoVzMIpOEqLKXX7AhArxOusjfcW","remember_token":null,"created_at":"2022-12-05 09:37:18","updated_at":"2022-12-13 03:12:44","role_as":"3"},
+{"id":"14","name":"Hiroko Grimes","email":"abc@gmail.com","email_verified_at":null,"password":"$2y$10$QVBg1kE7Imm53V3THKl8o.rLP99W.48WIxhL1Ml.VHtb8JvQgS23a","remember_token":null,"created_at":"2022-12-05 10:20:49","updated_at":"2022-12-05 10:20:49","role_as":"1"},
+{"id":"15","name":"Fatima Dudley","email":"pasuc@mailinator.com","email_verified_at":null,"password":"$2y$10$uAhpkgv78K1GfzvIabH7Dui5kvUXNqwPnTuCY1LiF22MPKb1l4qca","remember_token":null,"created_at":"2022-12-06 07:08:53","updated_at":"2022-12-13 03:22:35","role_as":"3"},
+{"id":"25","name":"Daquan","email":"2022schcl4Daquan001@school.org","email_verified_at":null,"password":"$2y$10$clP33fEVoczcolES4EWkfeuGbWvstXYcLbv6Q75oN4Dvmu6S.UtVW","remember_token":null,"created_at":"2022-12-11 03:35:00","updated_at":"2022-12-11 03:35:00","role_as":"2"},
+{"id":"26","name":"TaShya","email":"2022schcl10aTaShya001@school.org","email_verified_at":null,"password":"$2y$10$qISovITZdIe2QN.zllq\/kutz7zyBP\/1Ir\/3XJ8QfeQPTN1K9gH0d2","remember_token":null,"created_at":"2022-12-11 03:39:08","updated_at":"2022-12-11 03:39:08","role_as":"2"},
+{"id":"27","name":"Rama","email":"2022schcl4aRama001@school.org","email_verified_at":null,"password":"$2y$10$pxeq1LOoPCqx9jFBB6Hue..VdgMK6B38X6JG5mmWIbBjGs98nJs7W","remember_token":null,"created_at":"2022-12-12 05:49:37","updated_at":"2022-12-12 05:49:37","role_as":"2"},
+{"id":"28","name":"Shad Kennedy","email":"2022schcl5aShad Kennedy001@school.org","email_verified_at":null,"password":"$2y$10$TYIiTIAmUXuhMjXMkM0Ax.BJdnpRUVtKB\/ch6sR6bXxojy8Rn3ISG","remember_token":null,"created_at":"2022-12-12 05:51:47","updated_at":"2022-12-12 05:51:47","role_as":"2"},
+{"id":"29","name":"Kaseem Vinson","email":"gitykodi@mailinator.com","email_verified_at":null,"password":"$2y$10$SiYkohMCuyCkAthPjKKIWuyTDTlZrVp3e2UKjRdwNNqzNseMCxdO.","remember_token":null,"created_at":"2022-12-13 03:23:32","updated_at":"2022-12-13 03:23:32","role_as":"1"},
+{"id":"30","name":"Rae Berger","email":"dabiq@mailinator.com","email_verified_at":null,"password":"$2y$10$Px7I.2QnJF5EGqQedfdYH.aHNr6DKZZYT9creLDkEdDyfEPsoNriS","remember_token":null,"created_at":"2022-12-13 06:31:33","updated_at":"2022-12-13 06:31:44","role_as":"3"}
+]
+}
+]
