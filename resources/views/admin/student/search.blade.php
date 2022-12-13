@@ -37,8 +37,8 @@
                     {{-- </div> --}}
                     <div class="col-md-3">
                         <div class="form-group row text-right">
-                                <form action="{{ url('admin/student') }}">
-                                <button type="Submit" class="btn btn-primary me-2 btn-rounded float-end">Add Student</button>
+                                <form action="{{ url('admin/displaystudent') }}">
+                                <button type="Submit" class="btn btn-info me-2 btn-rounded float-end ">Back</button>
                                 </form>
                         </div>
                     </div>
@@ -82,8 +82,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($show)&& $show->count())
-                            @foreach($show as $data)
+                            {{-- @if(!empty($show)&& $show->count()) --}}
+                            @foreach($search as $data)
                             <tr >
                                 <td>
                                     {{ $data->student_id}}
@@ -114,7 +114,7 @@
                                     <a href="{{ url('admin/teacher/' .$data->id. '/delete') }}" class="btn btn-danger">Delete</a>
                                 </td>
                                 @endforeach
-                                @endif
+                                {{-- @endif --}}
                             {{-- </tr>
                             <tr class="table-warning">
                                 <td>
@@ -187,7 +187,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row">{{$show->links()}}</div>
+                <div class="row">{{$search->links()}}</div>
             </div>
         </div>
     </div>

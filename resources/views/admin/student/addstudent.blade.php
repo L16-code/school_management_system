@@ -9,7 +9,13 @@
                     @if (Session::has('message'))
                     <p class="alert alert-info">{{ Session::get('message') }}</p>
                 @endif
-
+                <div class="col-md-3 ">
+                    <div class="form-group row text-right">
+                            <form action="{{ url('admin/displaystudent') }}">
+                            <button type="Submit" class="btn btn-danger me-2 btn-rounded float-right">Back</button>
+                            </form>
+                    </div>
+                </div>
                     <form class="forms-sample" action="{{ url('admin/addstudent') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf

@@ -65,7 +65,7 @@
                         </thead>
                         <tbody>
                             {{-- @if (!empty($show) && $show->count()) --}}
-                            @foreach ($show as $data)
+                            @foreach ($search as $data)
                                 <tr>
                                     <td>
                                         {{ $data->classs }}
@@ -183,7 +183,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row">{{ $show->links() }}</div>
+                <div class="row">{{ $search->links() }}</div>
             </div>
         </div>
     </div>

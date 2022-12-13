@@ -46,8 +46,15 @@
         </li> --}}
 
         @if (Auth::user()->role_as==1||Auth::user()->role_as==0)
-
+        {{-- @if (Auth::user()->role_as==0) --}}
         <li class="nav-item">
+            <a class="nav-link 1" href="{{ url('admin/displaystudent') }}">
+                <i class="mdi mdi-circle-outline menu-icon"></i>
+                <span class="menu-title">Students</span>
+                {{-- <i class="menu-arrow"></i> --}}
+            </a>
+            @endif
+        {{-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-base" aria-expanded="false" aria-controls="ui-basic">
                 <i class="mdi mdi-circle-outline menu-icon"></i>
                 <span class="menu-title">Students</span>
@@ -63,8 +70,8 @@
                     @endif
                 </ul>
             </div>
-        </li>
-        @endif
+        </li> --}}
+        {{-- @endif --}}
         <li class="nav-item">
             <a class="nav-link" href="{{ url('admin/display') }}" >
                 <i class="mdi mdi-account menu-icon"></i>

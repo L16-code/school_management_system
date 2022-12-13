@@ -19,15 +19,13 @@ class ClassController extends Controller
         return view('admin.class.display',['show'=>$value]);
     }
 
-    public function edit($id)
-    {
+    public function edit($id){
         $value=DB::table('class_tbl')->join('section_tbl','class_tbl.id','=','section_tbl.cid')->select('class_tbl.classs','section_tbl.*')->where('section_tbl.id',"=",$id)->first();
         // dd($value);
         return view ('admin.class.editclass',['id'=>$value]);
     }
 
-    public function update(Request $request,$id)
-    {
+    public function update(Request $request,$id){
         $class=Section::all()->where('id','=',$id)->first();
         $input=$request->max;
         if($class->current > $input)
@@ -42,6 +40,7 @@ class ClassController extends Controller
         return redirect('admin/display');
 
     }
+
     public function addclass(Request $request){
         $recived_class = $request->class;
         $recived_section = $request->sec;
@@ -72,4 +71,18 @@ class ClassController extends Controller
 
     }
 
+    public function search(Request $request){
+        if($request->search){
+            $search=DB::table('class_tbl')
+            ->join('section_tbl','class_tbl.id','=','section_tbl.cid')
+            ->select('class_tbl.classs','section_tbl.*')
+            ->where('class_tbl.classs','LIKE','%'.$request->search)
+            ->orderBy('cid','asc')
+            ->paginate(10);
+            return view('admin.class.search',compact('search'));
+        }
+        else{
+            return redirect('admin/display')->with('message', 'empty search');
+        }
+    }
 }

@@ -115,8 +115,26 @@ class StudentController extends Controller
         ->join('section_tbl','section_tbl.id','=','student.sid')
         ->join('class_tbl','class_tbl.id','=','section_tbl.cid')
         ->select('class_tbl.classs','student.*','users.email','section_tbl.name','users.name')
-        ->where('is_delete','=','0')->paginate(10);
+        ->where('is_delete','=','0')->paginate(2);
         // dd($value);
         return view('admin.student.displaystudent',['show'=>$value]);
+    }
+    public function search(Request $request){
+        if($request->search){
+        $search=DB::table('student')->join('users','users.id','=','student.stid')
+        ->join('section_tbl','section_tbl.id','=','student.sid')
+        ->join('class_tbl','class_tbl.id','=','section_tbl.cid')
+        ->select('class_tbl.classs','student.*','users.email','section_tbl.name','users.name')
+        ->where('users.name','LIKE','%'.$request->search.'%')
+        ->orwhere('users.email','LIKE','%'.$request->search.'%' )
+        ->orwhere('student.student_id','LIKE','%'.$request->search.'%' )
+        ->orwhere('class_tbl.classs','LIKE','%'.$request->search.'%' )
+        ->where('is_delete','=','0')
+        ->paginate(5);
+        return view('admin.student.search',compact('search'));
+        }
+        else{
+            return redirect('admin/studentdisplay')->with('message', 'empty search');
+        }
     }
 }

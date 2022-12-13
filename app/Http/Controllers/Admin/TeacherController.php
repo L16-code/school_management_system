@@ -18,8 +18,7 @@ class TeacherController extends Controller
 
 
     }
-    public function addteacher(Request $request)
-    {
+    public function addteacher(Request $request){
         $validatedata=$request;
         $user= new User;
         $user->name=$validatedata['name'];
@@ -87,20 +86,37 @@ public function search(Request $request){
     }
 
 }
-    public function teachershow(){
+public function status(Request $request){
+    // $status=$request;
+    $id=$request->status_id;
+    $teacher=Teacher::where('teacher.tid','=',$id)->first();
+    $status = $teacher->status;
+    // dd($teacher);
+        if($status==1)
+        {
+            $teacher->status= 0;
+        }
+        else{
+            $teacher->status= 1;
+        }
+        $teacher->update();
+        return redirect('admin/teachers');
+
+
+}
+public function teachershow(){
         // $show=Teacher::all();
         // return $show;
         $value=DB::table('users')->join('teacher','users.id','=','teacher.tid')->select('users.name','users.email','teacher.*')->where('is_delete','=','0')->paginate(5);
         // $show=DB::table('Teacher')->orderBy('id','asc')->where('is_delete','=','0')->paginate(3);
         return view('admin.teacher.teachers',['show'=>$value]);
-    }
-    public function edit($tid)
-    {
+}
+public function edit($tid){
         $value=DB::table('users')->join('teacher','users.id','=','teacher.tid')->select('users.name','users.email','teacher.*')->where('teacher.tid','=',$tid)->first();
 
         return view ('admin.teacher.edit',['tid'=>$value]);
 
-    }
+}
 
     // public function delete(Teacher $tid)
     // {
@@ -108,9 +124,8 @@ public function search(Request $request){
     //     $tid=$delete->is_delete=1;
     //     // return view ('admin.teacher.edit',compact('tid'));
     //     return redirect('admin.teacher.teachers');
-    public function delete(Request $request, $id)
-
-    {
+    public function delete(Request $request){
+        $id=$request->teacher_id;
         $teacher = Teacher::where('teacher.tid','=',$id)->first();
         // $teacher=Teacher::findorFail($id);
 
@@ -123,8 +138,7 @@ public function search(Request $request){
     }
 
 
-    public function update(Request $request,$tid)
-    {
+    public function update(Request $request,$tid){
         // return view ('admin.teacher.edit',compact('tid'));
         $teacher=Teacher::all()->where('tid','=',$tid)->first();
         // $value=DB::table('users')->join('teacher','users.id','=','teacher.tid')->select('users.name','users.email','teacher.*')->where('is_delete','=','0')->get();
@@ -172,7 +186,7 @@ public function search(Request $request){
 
         $teacher->update();
         return redirect('admin/teachers');
-    }
+}
     // public function save(Request $request){
     //     /** Validate name field */
     //     $request->validate([
